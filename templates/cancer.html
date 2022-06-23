@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+      }
+
+      html,
+      body,
+      header,
+      #intro {
+         height: 100%;
+      }
+
+      small{
+      color: darkgrey;
+      }
+
+      img {
+         display: block;
+         max-width: 100%;
+         height: auto;
+      }
+      .btn.pb {
+           margin-top: 6rem;
+           background-color: dark;
+        }
+   </style>
+   <title>Breast Cancer Prediction</title>
+</head>
+
+<body>
+   <header>
+
+      <div id="intro" class="container-fluid view ">
+         <h1 class="text-center text-capitalize pt-5">Predict chances of getting Breast Cancer</h1>
+         <hr class="w-75 mx-auto pt-5">
+         <div class="row mb-5">
+            <div class="col-lg-6 col-md-6 col-12 my-auto">
+               <img src="../static/images/breast.jpg" class="float-left">
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-12">
+               <form action="{{ url_for('predictBC')}}" method="POST">
+
+                  <div class="form-group">
+                     <label for="radius_mean">Mean of the Radius <small>(6.90-28.00)</small></label>
+                     <input class="form-control" type="flaot" id="radius_mean" name="radius_mean" required="required" placeholder="Mean of the radius">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="texture_mean">Mean of the Texture <small>(9.70-39.30)</small></label>
+                     <input class="form-control" type="float" id="texture_mean" name="texture_mean" required="required" placeholder="Mean of the Texture">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="smoothness_mean">Mean of the Smoothness <small>(0.05-0.10)</small></label>
+                     <input class="form-control" type="flaot" id="smoothness_mean" name="smoothness_mean" required="required" placeholder="Mean of the Smoothness">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="compactness_mean">Mean of the Compactness <small>(0.01-0.30)</small></label>
+                     <input class="form-control" type="float" id="compactness_mean" name="compactness_mean" required="required" placeholder="Mean of the Compactness">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="symmetry_mean">Mean of the Symmetry <small>(0.10-0.30)</small></label>
+                     <input class="form-control" type="flaot" id="symmetry_mean" name="symmetry_mean" required="required" placeholder="Mean of the Symmetry">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="fractal_dimension_mean">Mean of the Fractal Dimension <small>(0.05-0.09)</small></label>
+                     <input class="form-control" type="float" id="fractal_dimension_mean" name="fractal_dimension_mean" required="required" placeholder="Mean of the Fractal Dimension">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="radius_se">Radius Se <small>(0.11-2.87)</small></label>
+                     <input class="form-control" type="flaot" id="radius_se" name="radius_se" required="required" placeholder="Radius Se">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="texture_se">Texture Se <small>(0.36-4.88)</small></label>
+                     <input class="form-control" type="float" id="texture_se" name="texture_se" required="required" placeholder="Texture Se">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="smoothness_se">Smoothness Se <small>(0.001-0.030)</small></label>
+                     <input class="form-control" type="flaot" id="smoothness_se" name="smoothness_se" required="required" placeholder="Smoothness Se">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="compactness_se">Compactness Se <small>(0.002-0.135)</small></label>
+                     <input class="form-control" type="float" id="compactness_se" name="compactness_se" required="required" placeholder="Compactness Se">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="concave points_se">Concave Point Se <small>(0.0-0.05)</small></label>
+                     <input class="form-control" type="flaot" id="concave points_se" name="concave points_se" required="required" placeholder="Concave Point Se">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="symmetry_se">Symmetry Se <small>(0.007-0.079)</small></label>
+                     <input class="form-control" type="float" id="symmetry_se" name="symmetry_se" required="required" placeholder="Symmetry Se">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="symmetry_worst">Symmetry Worst <small>(0.15-0.67)</small></label>
+                     <input class="form-control" type="float" id="symmetry_worst" name="symmetry_worst" required="required" placeholder="Symmetry Worst">
+                  </div>
+
+                  <button type="submit" class="btn btn-danger">Predict</button>
+               </form>
+               <a class="btn btn-dark pb" href="/" role="button">Back</a>
+            </div>
+         </div>
+      </div>
+
+   </header>
+
+
+</body>
+
+</html>

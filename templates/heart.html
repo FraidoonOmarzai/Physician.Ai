@@ -28,7 +28,7 @@
     height: auto;
     }
     small{
-      color: #D8CCA3;
+      color: darkgrey;
     }
     .btn.pb {
          margin-top: 6rem;
@@ -41,13 +41,13 @@
     <header>
 
       <div id="intro" class="container-fluid view ">
-        <h1 class="text-center text-capitalize pt-5">Predict chances of getting a heart disease</h1>
+        <h1 class="text-center text-capitalize pt-5">Predict chances of getting heart disease</h1>
         <hr class="w-75 mx-auto pt-5">
         <div class="row mb-5">
           <div class="col-lg-6 col-md-6 col-12 my-auto">
             <img src="../static/images/heart.jpg" class="float-left">
-
           </div>
+
           <div class="col-lg-6 col-md-6 col-12">
             <form action="{{ url_for('predictHD')}}" method="post">
                <div class="form-group">
