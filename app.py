@@ -74,6 +74,33 @@ def predictBC():
         prediction = "No need to fear. You have no dangerous symptoms of the disease"
     return(render_template("result.html", prediction_text=prediction))
 
+# Diabetes
+
+@app.route("/Diabet")
+def diabet():
+    return render_template("diabetes.html")
+
+
+@app.route('/predictDiabet', methods=["POST"])
+def predictDiabet():
+    loaded_model = joblib.load('Trained Model/Diabet/diabetes_model.pkl')
+
+    if request.method == "POST":
+        to_predict_list = request.form.to_dict()
+        to_predict_list = list(to_predict_list.values())
+        to_predict_list = list(map(float, to_predict_list))
+
+        to_predict = np.array(to_predict_list).reshape(1, len(to_predict_list))
+        result = loaded_model.predict(to_predict)
+        print(result)
+
+    if(int(result) == 1):
+        prediction = "Sorry! it seems getting the disease. Please consult the doctor immediately"
+    else:
+        prediction = "No need to fear. You have no dangerous symptoms of the disease"
+    return(render_template("result.html", prediction_text=prediction))
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
