@@ -53,7 +53,8 @@ def BreastCancer():
 def PredictorBC(to_predict_list, size):
     to_predict = np.array(to_predict_list).reshape(1, size)
     if(size == 13):
-        loaded_model = joblib.load('Trained Model/breast-cancer/cancer_model.pkl')
+        loaded_model = joblib.load(
+            'Trained Model/breast-cancer/cancer_model.pkl')
         result = loaded_model.predict(to_predict)
     return result[0]
 
@@ -75,7 +76,6 @@ def predictBC():
     return(render_template("result.html", prediction_text=prediction))
 
 # Diabetes
-
 @app.route("/Diabet")
 def diabet():
     return render_template("diabetes.html")
@@ -100,6 +100,30 @@ def predictDiabet():
         prediction = "No need to fear. You have no dangerous symptoms of the disease"
     return(render_template("result.html", prediction_text=prediction))
 
+# kidney disease
+@app.route("/kidney")
+def kidney():
+    return render_template("kidney.html")
+
+
+@app.route('/predictKD', methods=["POST"])
+def predictKD():
+
+    loaded_model = joblib.load('Trained Model/kidney/kidney_model.pkl')
+
+    if request.method == "POST":
+        to_predict_list = request.form.to_dict()
+        to_predict_list = list(to_predict_list.values())
+        to_predict_list = list(map(float, to_predict_list))
+
+        to_predict = np.array(to_predict_list).reshape(1, len(to_predict_list))
+        result = loaded_model.predict(to_predict)
+
+    if(int(result) == 1):
+        prediction = "Sorry you chances of getting the disease. Please consult the doctor immediately"
+    else:
+        prediction = "No need to fear. You have no dangerous symptoms of the disease"
+    return(render_template("result.html", prediction_text=prediction))
 
 
 if __name__ == "__main__":

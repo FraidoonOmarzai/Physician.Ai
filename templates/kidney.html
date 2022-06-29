@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+      }
+
+      html,
+      body,
+      header,
+      #intro {
+         height: 100%;
+      }
+
+      img {
+         display: block;
+         max-width: 100%;
+         height: auto;
+      }
+
+      small {
+         color: darkgrey;
+      }
+
+      .btn.pb {
+         margin-top: 6rem;
+         background-color: dark;
+      }
+   </style>
+   <title>Kidney Disease Prediction</title>
+</head>
+
+<body>
+   <header>
+
+      <div id="intro" class="container-fluid view ">
+         <h1 class="text-center text-capitalize pt-5">Predict chances of getting kidney disease</h1>
+         <hr class="w-75 mx-auto pt-5">
+         <div class="row mb-5">
+            <div class="col-lg-6 col-md-6 col-12 my-auto">
+               <img src="../static/images/kidney.png" class="float-left">
+
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+               <form action="{{ url_for('predictKD')}}" method="post">
+
+                  <div class="form-group">
+                     <label for="age">Age</label>
+                     <input class="form-control" type="number" id="age" name="age" required="required" placeholder="Age">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="bp">Blood Pressure <small>(50-180)</small></label>
+                     <input class="form-control" type="number" id="bp" name="Year" required="required" placeholder="Blood Pressure">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="al">Albumin <small>(0-5)</small></label>
+                     <input class="form-control" type="number" step="any" id="al" name="al" required="required" placeholder="Albumin(nominal)">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="su">Blood Sugar Level <small>(0-5)</small></label>
+                     <input class="form-control" type="number" id="su" name="su" required="required" placeholder="Blood Sugar Level">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="bgr">Blood Glucose Random <small>(22-490)</small></label>
+                     <input class="form-control" type="number" id="bgr" name="bgr" required="required" placeholder="Blood Glucose Random">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="bu">Blood Urea <small>1-390</small></label>
+                     <input class="form-control" type="number" id="bu" name="bu" required="required" placeholder="Blood Urea">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="sc">Serum Creatinine <small>(0.4-76.0)</small></label>
+                     <input class="form-control" type="number" id="sc" name="sc" required="required" placeholder="Serum Creatinine">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="sod">Sodium <small>(4.5-163)</small></label>
+                     <input class="form-control" type="number" id="sod" name="sod" required="required" placeholder="Sodium">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="hemo">Hemoglobin <small>(3.1-17.8)</small></label>
+                     <input class="form-control" type="number" id="hemo" name="hemo" required="required" placeholder="Hemoglobin">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="pcv">Packed Cell Volume <small>(9-54)</small></label>
+                     <input class="form-control" type="number" id="pcv" name="pcv" required="required" placeholder="Packed Cell Volume">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="rc">Red Blood Cell Count <small>(2.1-8.0)</small></label>
+                     <input class="form-control" type="number" id="rc" name="rc" required="required" placeholder="Red Blood Cell Count">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="ht">Hypertension</label>
+                     <select class="form-control" id="ht" name="ht" required="required">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                     </select>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="dm">Diabetes Mellitus</label>
+                     <select class="form-control" id="dm" name="dm" required="required">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                     </select>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="appet">Appetite</label>
+                     <select class="form-control" id="appet" name="appet" required="required">
+                        <option value="0">Good</option>
+                        <option value="1">Poor</option>
+                     </select>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="pe">Pedal Edema</label>
+                     <select class="form-control" id="pe" name="pe" required="required">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                     </select>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="ane">Anemia</label>
+                     <select class="form-control" id="ane" name="ane" required="required">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                     </select>
+                  </div>
+
+                  <button type="submit" class="btn btn-danger">Predict</button>
+               </form>
+               <a class="btn btn-dark pb" href="/" role="button">Back</a>
+            </div>
+         </div>
+      </div>
+
+   </header>
+
+</body>
+
+</html>
