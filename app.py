@@ -1,4 +1,9 @@
 from flask import Flask, render_template, url_for, request
+import os
+from werkzeug.utils import secure_filename
+from tensorflow.keras.models import load_model
+import cv2
+from PIL import Image
 import joblib
 import numpy as np
 
@@ -148,6 +153,48 @@ def predictLD():
     else:
         prediction = "No need to fear. You have no dangerous symptoms of the disease"
     return(render_template("result.html", prediction_text=prediction))
+
+# brain tumor
+@app.route('/BrainTumor')
+def brain_tumor():
+    return render_template('brain_tumor.html')
+
+
+def predict_Btumor(img_path):
+    model_load = load_model("Trained Model/brain tumor/brain_tumor.h5")
+
+    img = cv2.imread(img_path)
+    img = Image.fromarray(img)
+    img = img.resize((64, 64))
+    img = np.array(img)
+    img = np.expand_dims(img, axis=0)
+
+    preds = model_load.predict(img)
+    return preds[0]
+
+
+@app.route('/predictBTumor', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        # Get the file from post request
+        f = request.files['file']
+        basepath = os.path.dirname(__file__)
+        file_path = os.path.join(
+            basepath, 'uploads', secure_filename(f.filename))
+
+        preds = predict_Btumor(file_path)
+        # print(preds)
+
+        if int(preds[0]) == 0:
+            result = "No worry! No Brain Tumor"
+        else:
+            result = "Patient has Brain Tumor"
+
+        # print(f'prdicted: {result}')
+
+        return result
+
+    return None
 
 
 if __name__ == "__main__":

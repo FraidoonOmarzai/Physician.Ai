@@ -14,6 +14,8 @@
   <br /><br />
 - Heart Disease Prediction ![Images](images/screenshots/heart.png)
   <br /><br />
+- Brain Tumor ![Images](images/screenshots/predicted.png)
+<br /><br />
 
 ## Installation
 
@@ -29,5 +31,9 @@
 - Joblib
 - Pickle
 - Tensorflow
+- cv2
+- PIL
+- os
+
 
 <h1 align='center'>Not completed yet!</h1>
