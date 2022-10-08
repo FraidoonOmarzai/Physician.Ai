@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+      }
+
+      html,
+      body,
+      header,
+      #intro {
+         height: 100%;
+      }
+
+      img {
+         display: block;
+         max-width: 100%;
+         height: auto;
+         margin-bottom: 200px;
+      }
+
+      small {
+         color: darkgrey;
+      }
+
+      .btn.pb {
+         margin-top: 6rem;
+         background-color: dark;
+      }
+   </style>
+   <title>Hepatitis Disease Prediction</title>
+</head>
+
+<body>
+   <header>
+
+      <div id="intro" class="container-fluid view ">
+         <h1 class="text-center text-capitalize pt-5">Predict chances of getting Hepatitis disease</h1>
+         <hr class="w-75 mx-auto pt-5">
+         <div class="row mb-5">
+            <div class="col-lg-6 col-md-6 col-12 my-auto">
+               <img src="../static/images/hep.jpg" class="float-left">
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+               <form action="{{ url_for('predictHepatitis')}}" method="post">
+
+                  <div class="form-group">
+                     <label for="Age">Age</label>
+                     <input class="form-control" type="text" id="Age" name="Age" required="required" placeholder="Age">
+                  </div>
+                  <div class="form-group">
+                     <label for="Sex">Sex</label>
+                     <select class="form-control" id="Sex" name="Sex" required="required">
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="ALB">ALB <small>(14.9-82.2)</small></label>
+                     <input class="form-control" type="float" id="ALB" name="ALB" required="required" placeholder="ALB">
+                  </div>
+                  <div class="form-group">
+                     <label for="ALP">ALP <small>(11.3-110)</small></label>
+                     <input class="form-control" type="float" id="ALP" name="ALP" required="required" placeholder="ALP">
+                  </div>
+                  <div class="form-group">
+                     <label for="ALT">ALT <small>(0.9-55)</small></label>
+                     <input class="form-control" type="float" id="ALT" name="ALT" required="required" placeholder="ALT">
+                  </div>
+                  <div class="form-group">
+                     <label for="AST">AST <small>(10.6-47)</small></label>
+                     <input class="form-control" type="float" id="AST" name="AST" required="required" placeholder="AST">
+                  </div>
+                  <div class="form-group">
+                     <label for="BIL">BIL <small>(0.8-19.7)</small></label>
+                     <input class="form-control" type="float" id="BIL" name="BIL" required="required" placeholder="BIL">
+                  </div>
+                  <div class="form-group">
+                     <label for="CHE">CHE <small>(1.42-16.4)</small></label>
+                     <input class="form-control" type="number" id="CHE" name="CHE" required="required" placeholder="CHE">
+                  </div>
+                  <div class="form-group">
+                     <label for="CHOL">CHOL<small>(1.43-9.67)</small></label>
+                     <input class="form-control" type="number" id="CHOL" name="CHOL" required="required" placeholder="CHOL">
+                  </div>
+                  <div class="form-group">
+                     <label for="CREA">CREA<small>(8-120.5)</small></label>
+                     <input class="form-control" type="text" id="CREA" name="CREA" required="required" placeholder="CREA">
+                  </div>
+                  <div class="form-group">
+                     <label for="GGT">GGT<small>(4.5-70.6)</small></label>
+                     <input class="form-control" type="float" id="GGT" name="GGT" required="required" placeholder="GGT">
+                  </div>
+                  <div class="form-group">
+                     <label for="PROT">PROT<small>(44.8-86.5)</small></label>
+                     <input class="form-control" type="float" id="PROT" name="PROT" required="required" placeholder="PROT">
+                  </div>
+
+                  <button type="submit" class="btn btn-danger">Predict</button>
+               </form>
+               <a class="btn btn-dark pb" href="/" role="button">Back</a>
+            </div>
+         </div>
+      </div>
+
+   </header>
+
+</body>
+
+</html>

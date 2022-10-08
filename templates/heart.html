@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+   <style>
+    *{
+    margin:0;
+    padding:0;
+    }
+    html,
+    body,
+    header,
+    #intro {
+    height: 100%;
+    }
+    img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    }
+    small{
+      color: darkgrey;
+    }
+    .btn.pb {
+         margin-top: 6rem;
+         background-color: dark;
+      }
+    </style>
+    <title>Heart disease Prediction</title>
+  </head>
+  <body>
+    <header>
+
+      <div id="intro" class="container-fluid view ">
+        <h1 class="text-center text-capitalize pt-5">Predict chances of getting heart disease</h1>
+        <hr class="w-75 mx-auto pt-5">
+        <div class="row mb-5">
+          <div class="col-lg-6 col-md-6 col-12 my-auto">
+            <img src="../static/images/heart.jpg" class="float-left">
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-12">
+            <form action="{{ url_for('predictHD')}}" method="post">
+               <div class="form-group">
+                <label for="age">Age</label>
+                <input class="form-control" type="number" id="age" name="age" required="required" placeholder="Age">
+              </div>
+               <div class="form-group">
+                <label for="sex">Sex</label>
+                <select class="form-control" id="sex" name = "sex" required="required" >
+                 <option value="1">Male</option>
+                 <option value="0">Female</option>
+               </select>
+              </div>
+              <div class="form-group">
+                <label for="cp">Chest Pain Type</label>
+                <select class="form-control" id="cp" name = "cp" required="required" placeholder="Chest Pain Type">
+                  <option value="1">Typical Angina</option>
+                  <option value="2">Atypical Angina</option>
+                  <option value="3">Non-Anginal Pain</option>
+                  <option value="4">Asymptomatic</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="trestbps">Resting Blood Pressure (in mm Hg) <small>(90-200)</small></label>
+                <input class="form-control" type="number" id="trestbps" name="trestbps" required="required" placeholder="Resting Blood Pressure">
+              </div>
+
+              <div class="form-group">
+                <label for="chol">Serum Cholestoral in mg/dl <small>(120-565)</small></label>
+                <input class="form-control" type="number" step="any" id="chol" name="chol" required="required" placeholder="Serum Cholestoral">
+              </div>
+
+              <div class="form-group">
+                <label for="fbs">Fasting Blood Sugar</label>
+                <select class="form-control" id="fbs" name = "fbs" required="required" placeholder="Fasting Blood Sugar">
+                  <option value="0">Fasting Blood Sugar < 120 mg/dl</option>
+                  <option value="1">Fasting Blood Sugar > 120 mg/dl</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="restecg">Resting Electro-cardiographic Result</label>
+                <select class="form-control" type="number" id="restecg" name="restecg" required="required" placeholder="Resting Electro-cardiographic Result">
+                <option value="0">Normal</option>
+                <option value="1">having ST-T wave abnormality</option>
+                <option value="2">showing probable or definite left ventricular hypertrophy</option>
+            	</select>
+              </div>
+
+              <div class="form-group">
+                <label for="thalach">Maximum Heart Rate Achieved <small>(70-200)</small></label>
+                <input class="form-control" id="thalach" name = "thalach" required="required" >
+              </div>
+
+              <div class="form-group">
+                <label for="exang">Exercise Induced Angina</label>
+                <select class="form-control" id="exang" name = "exang" required="required" >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="oldpeak">ST Depression Induced By Exercise Relative To Rest <small>(0.0-6.2)</small></label>
+                <input class="form-control" type="float" id="oldpeak" name = "oldpeak" required="required" >
+              </div>
+
+              <div class="form-group">
+                <label for="slope">The Slope Of The Peak Exercise ST Segment</label>
+                <select class="form-control" id="slope" name = "slope" required="required" >
+                  <option value="0">Upsloping</option>
+                  <option value="1">Flatsloping</option>
+                  <option value="2">Downslopins</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="ca">Number Of Major Vessels <small>(0-3)</small> Colored By Flourosopy</label>
+                <input class="form-control" type="number" id="ca" name = "ca" required="required" >
+              </div>
+
+              <div class="form-group">
+                <label for="thal">Thalium Stress Result <small>(0-3)</small></label>
+                <input class="form-control" type="number" id="thal" name = "thal" required="required" >
+              </div>
+
+              <button type="submit" class="btn btn-danger">Predict</button>
+            </form>
+            <a class="btn btn-dark pb" href="/" role="button">Back</a>
+          </div>
+        </div>
+      </div>
+
+    </header>
+  </body>
+</html>

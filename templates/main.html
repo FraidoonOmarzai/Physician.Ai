@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Physician.Ai</title>
+
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-primary">
+			<a class="navbar-brand" href="/">PHYSICIAN.Ai</a>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav ml-auto">
+
+					<li class="nav-item">
+						<a class="nav-link" href="/BrainTumor">Brain Tumor Detection<small><sub>img</sub></small><span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/heart">Heart Disease</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/BreastCancer">Breast Cancer</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/hepatitis">Hepatitis</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/Diabet">Diabetes</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/liver">Liver Diease</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/stroke">Stroke Disease</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/lung">Lung Cancer<small><sub>img</sub></small></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/kidney">Kidney Disease</a>
+					</li>
+		
+
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<main role="main">
+
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<!-- <img class="first-slide" src="{{ url_for('static', filename='images/img/radiologist.jpg') }}" alt="First slide"> -->
+					<img class="first-slide" src="../static/images/img/radiologist.jpg" alt="First slide">
+
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container marketing">
+			<div class="row">
+				<div class="col-lg-5">
+					<!-- <img class="rounded-circle" src="{{ url_for('static', filename='images/img/doctors.jpg') }}" width="140" height="140"> -->
+					<img class="rounded-circle" src="../static/images/img/doctors.jpg" width="140" height="140">
+
+					<h2>Experience The Power Of AI In HealthCare</h2>
+					<p>AI has the capacity to surpass human doctors and help them detect, predict, and diagnose diseases more accurately and at a faster rate. To date there has been a wide range of research into how AI can aid clinical decisions and enhance
+						physicians judgement.</p>
+
+				</div>
+			</div>
+
+			<hr class="featurette-divider">
+			<div class="row featurette">
+				<div class="col-md-7">
+					<h2 class="featurette-heading">MEDICAL IMAGING<span class="text-muted">:X-Ray CT-Scan MRI </span></h2>
+					<p class="lead">The use of artificial intelligence (AI) in diagnostic medical imaging is undergoing extensive evaluation. AI has shown impressive accuracy and sensitivity in the identification of imaging abnormalities and promises to enhance tissue-based detection and characterisation. Artificial intelligence can support radiologists and pathologists as they use medical imaging to diagnose a wide variety of conditions.</p>
+				</div>
+				<div class="col-md-5">
+					<!-- <img class="featurette-image img-fluid mx-auto" src="{{ url_for('static', filename='images/img/medical_imaging.jpg') }}" alt="Health Care Professionals"> -->
+					<img class="featurette-image img-fluid mx-auto" src="../static/images/img/medical_imaging.jpg" alt="Health Care Professionals">
+				</div>
+			</div>
+			<hr class="featurette-divider">
+			<div class="row featurette">
+				<div class="col-md-7 order-md-2">
+					<h2 class="featurette-heading">ROBOTIC SURGERY<span class="text-muted">:Robot-assisted Surgery</span></h2>
+					<p class="lead">Robotic surgery, also called robot-assisted surgery, allows doctors to perform many types of complex procedures with more precision, flexibility and control than is possible with conventional techniques. Robotic surgery is usually associated with minimally invasive surgery — procedures performed through tiny incisions. Robotic surgery can be used to treat conditions affecting your heart, digestive system, bladder, prostate and more. Benefits include less blood loss, shorter hospital stays and quicker recovery.
+					</p>
+				</div>
+				<div class="col-md-5 order-md-1">
+					<!-- <img class="featurette-image img-fluid mx-auto" src="{{ url_for('static', filename='images/img/robot_surgery.jpg') }}" alt="Generic placeholder image"> -->
+					<img class="featurette-image img-fluid mx-auto" src="../static/images/img/robot_surgery.jpg" alt="Generic placeholder image">
+
+				</div>
+			</div>
+			<hr class="featurette-divider">
+			<div class="row featurette">
+				<div class="col-md-7">
+					<h2 class="featurette-heading">SUPPORT IN CLINICAL DECISIONS<span class="text-muted">:AI Clinical Decision Support Systems</span></h2>
+					<p class="lead">AI clinical decision support systems can improve diagnosis, treatment, and prognosis of a particular medical condition, by predicting the probability of a medical outcome or the risk for a certain disease based on biomedical imaging data.</p>
+				</div>
+				<div class="col-md-5">
+					<!-- <img class="featurette-image img-fluid mx-auto" src="{{ url_for('static', filename='images/img/support_system.jpeg') }}" alt="Generic placeholder image"> -->
+					<img class="featurette-image img-fluid mx-auto" src="../static/images/img/support_system.jpeg" alt="Generic placeholder image">
+
+				</div>
+			</div>
+			<hr class="featurette-divider">
+		</div>
+		<footer class="container">
+
+			<p style="text-align: center;">© Copyright 2022</p>
+
+		</footer>
+	</main>
+
+</body>
+
+</html>

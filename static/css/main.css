@@ -1,0 +1,87 @@
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #5a5a5a;
+}
+
+.navbar{
+   padding-left: 100px;
+   padding-right: 100px;
+}
+
+.nav-item{
+   padding-left: 20px;
+}
+
+.nav-link{
+  font-size: 20px;
+}
+
+.carousel {
+  margin-bottom: 4rem;
+}
+.carousel-item {
+  height: 45rem;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  /* height: 36rem; */
+}
+
+
+.marketing .col-lg-5 {
+   margin-left: 15rem;
+   margin-bottom: 1.5rem;
+   text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+.marketing .col-lg-5 p {
+  margin-right: .70rem;
+  margin-left: .70rem;
+}
+
+.rounded-circle{
+   width: 280px;
+   height: 250px;
+   padding-bottom: 10px;
+}
+
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 5rem;
+  }
+}
