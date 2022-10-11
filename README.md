@@ -28,10 +28,22 @@
   ![Images](images/screenshots/hepatitis.jpeg)
   <br /><br />
 
+### Skin Cancer Detection
+
+- [Hepatitis Dataset](https://www.kaggle.com/datasets/fedesoriano/hepatitis-c-dataset)
+  ![Images](images/screenshots/skin.png)
+  <br /><br />
+
 ### Diabetes Prediction
 
 - [Diabetes Dataset](https://www.kaggle.com/datasets/mathchi/diabetes-data-set)
   ![Images](images/screenshots/diabetes.png)
+  <br /><br />
+
+### Ocular Disease Detection
+
+- [Diabetes Dataset](https://www.kaggle.com/datasets/mathchi/diabetes-data-set)
+  ![Images](images/screenshots/eye.png)
   <br /><br />
 
 ### Liver Disease Prediction
@@ -44,6 +56,12 @@
 
 - [Stroke Disease Dataset](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset)
   ![Images](images/screenshots/stroke.png)
+  <br /><br />
+
+### Lung Cancer
+
+- [Lung cancer Dataset](https://www.kaggle.com/datasets/mohamedhanyyy/chest-ctscan-images)
+  ![Images](images/screenshots/lung.png)
   <br /><br />
 
 ### Kidney Disease Prediction

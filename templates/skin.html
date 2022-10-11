@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Skin Cancer</title>
+   <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+   <div id="intro" class="container-fluid view ">
+      <h1 class="text-center text-capitalize pt-5">Skin Cancer Detection</h1>
+      <hr class="w-75 mx-auto pt-5">
+      <div class="row mb-5">
+         <div class="col-lg-6 col-md-6 col-12 my-auto">
+            <img src="/static/images/skin-cancer.jpg" width="900" height="700" class="float-left">
+         </div>
+         <div class="col-lg-6 col-md-6 col-12">
+
+           <div class="container">
+             <form class="form-horizontal" action="/predictSkinC" method="post" enctype="multipart/form-data">
+
+                <label class="upload-labe" for="imageUpload">Upload Your Image :</label>
+                <input type="file" class="form-control"  name="my_image" id="imageUpload">
+
+                <button type="submit" class="btn btn-success">Submit</button>
+
+           </form>
+             {% if prediction  %}
+             <img src="{{img_path}}" height="400px" width="400px">
+             <h2> Prediction : <i> {{prediction}} </i></h2>
+             {% endif %}
+             <a class="btn btn-dark pb" href="/" role="button">Back</a>
+           </div>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

@@ -271,7 +271,6 @@ def predict_label(img_path):
 	pred = model.predict(img)
 	return pred[0]
 
-# routes
 @app.route("/lung")
 def lung():
 	return render_template("lung.html")
@@ -291,6 +290,75 @@ def get_output():
 
 	return render_template("lung.html", prediction = dic[p], img_path = img_path)
 
+
+# Ocular disease
+def predict_label1(img_path):
+	model = load_model("Trained Model/ocular/model.h5")
+
+	img = cv2.imread(img_path)
+	img = Image.fromarray(img)
+	img = img.resize((224, 224))
+	img = np.array(img)
+	img = np.expand_dims(img, axis=0)
+
+	pred = model.predict(img)
+	return pred[0]
+
+
+@app.route("/ocular")
+def ocular():
+	return render_template("ocular.html")
+
+
+@app.route("/predictOcular", methods = ['GET', 'POST'])
+def predictOcular():
+	dic ={ 0:"No chance of disease", 1:"chance Of Ocular disease!"}
+
+	if request.method == 'POST':
+		img = request.files['my_image']
+
+		img_path = "static/ocular images/" + img.filename
+		img.save(img_path)
+
+		p = predict_label1(img_path)
+		print(round(p[0]))
+
+	return render_template("ocular.html", prediction = dic[round(p[0])], img_path = img_path)
+
+
+# Skin cancer
+def predict_label2(img_path):
+	model = load_model("Trained Model/skin cancer/skin_model.h5")
+
+	img = cv2.imread(img_path)
+	img = Image.fromarray(img)
+	img = img.resize((224, 224))
+	img = np.array(img)
+	img = np.expand_dims(img, axis=0)
+
+	pred = model.predict(img)
+	return pred[0]
+
+
+@app.route("/skin")
+def skin():
+	return render_template("skin.html")
+
+
+@app.route("/predictSkinC", methods = ['GET', 'POST'])
+def predictSkinC():
+	dic ={ 0:"Benign", 1:"Malignant!"}
+
+	if request.method == 'POST':
+		img = request.files['my_image']
+
+		img_path = "static/skin images/" + img.filename
+		img.save(img_path)
+
+		p = predict_label2(img_path)[0]
+		print(np.round(p))
+
+	return render_template("skin.html", prediction = dic[np.round(p)], img_path = img_path)
 
 if __name__ == "__main__":
     app.run(debug=True)
